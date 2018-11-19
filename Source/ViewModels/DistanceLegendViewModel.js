@@ -19,7 +19,7 @@ define([
     loadView) {
     'use strict';
 
-    var DistanceLegendViewModel = function (options) {
+    const DistanceLegendViewModel = function (options) {
         if (!defined(options) || !defined(options.terria)) {
             throw new DeveloperError('options.terria is required.');
         }
@@ -49,11 +49,11 @@ define([
 //            }
 //        }, this);
 
-        var that = this;
+        const that = this;
 
         function addUpdateSubscription() {
             if (defined(that.terria)) {
-                var scene = that.terria.scene;
+                const scene = that.terria.scene;
                 that._removeSubscription = scene.postRender.addEventListener(function () {
                     updateDistanceLegendCesium(this, scene);
                 }, that);
@@ -76,7 +76,7 @@ define([
     };
 
     DistanceLegendViewModel.prototype.show = function (container) {
-        var testing ;
+        const testing ;
         if ( this.enableDistanceLegend)
         {
              testing = '<div class="distance-legend" data-bind="visible: distanceLabel && barWidth">' +
@@ -97,14 +97,14 @@ define([
     };
 
     DistanceLegendViewModel.create = function (options) {
-        var result = new DistanceLegendViewModel(options);
+        const result = new DistanceLegendViewModel(options);
         result.show(options.container);
         return result;
     };
 
-    var geodesic = new EllipsoidGeodesic();
+    const geodesic = new EllipsoidGeodesic();
 
-    var distances = [
+    const distances = [
         1, 2, 3, 5,
         10, 20, 30, 50,
         100, 200, 300, 500,
@@ -121,7 +121,7 @@ define([
             viewModel.distanceLabel = undefined;
             return;
         }
-        var now = getTimestamp();
+        const now = getTimestamp();
         if (now < viewModel._lastLegendUpdate + 250) {
             return;
         }
@@ -129,15 +129,15 @@ define([
         viewModel._lastLegendUpdate = now;
 
         // Find the distance between two pixels at the bottom center of the screen.
-        var width = scene.canvas.clientWidth;
-        var height = scene.canvas.clientHeight;
+        const width = scene.canvas.clientWidth;
+        const height = scene.canvas.clientHeight;
 
-        var left = scene.camera.getPickRay(new Cartesian2((width / 2) | 0, height - 1));
-        var right = scene.camera.getPickRay(new Cartesian2(1 + (width / 2) | 0, height - 1));
+        const left = scene.camera.getPickRay(new Cartesian2((width / 2) | 0, height - 1));
+        const right = scene.camera.getPickRay(new Cartesian2(1 + (width / 2) | 0, height - 1));
 
-        var globe = scene.globe;
-        var leftPosition = globe.pick(left, scene);
-        var rightPosition = globe.pick(right, scene);
+        const globe = scene.globe;
+        const leftPosition = globe.pick(left, scene);
+        const rightPosition = globe.pick(right, scene);
 
         if (!defined(leftPosition) || !defined(rightPosition)) {
             viewModel.barWidth = undefined;
@@ -145,23 +145,23 @@ define([
             return;
         }
 
-        var leftCartographic = globe.ellipsoid.cartesianToCartographic(leftPosition);
-        var rightCartographic = globe.ellipsoid.cartesianToCartographic(rightPosition);
+        const leftCartographic = globe.ellipsoid.cartesianToCartographic(leftPosition);
+        const rightCartographic = globe.ellipsoid.cartesianToCartographic(rightPosition);
 
         geodesic.setEndPoints(leftCartographic, rightCartographic);
-        var pixelDistance = geodesic.surfaceDistance;
+        const pixelDistance = geodesic.surfaceDistance;
 
         // Find the first distance that makes the scale bar less than 100 pixels.
-        var maxBarWidth = 100;
-        var distance;
-        for (var i = distances.length - 1; !defined(distance) && i >= 0; --i) {
+        const maxBarWidth = 100;
+        const distance;
+        for (const i = distances.length - 1; !defined(distance) && i >= 0; --i) {
             if (distances[i] / pixelDistance < maxBarWidth) {
                 distance = distances[i];
             }
         }
 
         if (defined(distance)) {
-            var label;
+            const label;
             if (distance >= 1000) {
                 label = (distance / 1000).toString() + ' km';
             } else {

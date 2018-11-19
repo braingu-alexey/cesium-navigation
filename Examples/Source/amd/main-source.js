@@ -8,7 +8,7 @@ require([
     viewerCesiumNavigationMixin) {
     "use strict";
 
-    var cesiumViewer = new Cesium.Viewer('cesiumContainer');
+    const cesiumViewer = new Cesium.Viewer('cesiumContainer');
 
     // extend our view by the cesium navigation mixin
     cesiumViewer.extend(viewerCesiumNavigationMixin, {});
@@ -16,8 +16,8 @@ require([
 
     function createSpirographEntity(url, longitude, latitude, height, radiusMedian, radiusSubCircle,
                                     durationMedianCircle, durationSubCircle) {
-        var centerPosition = Cesium.Cartographic.fromDegrees(longitude, latitude, height);
-        var spirographPositionProperty = new SpirographPositionProperty(centerPosition, radiusMedian, radiusSubCircle,
+        const centerPosition = Cesium.Cartographic.fromDegrees(longitude, latitude, height);
+        const spirographPositionProperty = new SpirographPositionProperty(centerPosition, radiusMedian, radiusSubCircle,
             durationMedianCircle, durationSubCircle, cesiumViewer.scene.globe.ellipsoid);
 
         cesiumViewer.entities.add({

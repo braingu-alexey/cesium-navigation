@@ -27,7 +27,7 @@ define([
      * @param {Terria} terria The Terria instance.
      * @param {boolean} zoomIn is used for zooming in (true) or out (false)
      */
-    var ZoomNavigationControl = function (terria, zoomIn) {
+    const ZoomNavigationControl = function (terria, zoomIn) {
         NavigationControl.apply(this, arguments);
 
         /**
@@ -74,7 +74,7 @@ define([
         this.zoom(this.relativeAmount);
     };
 
-    var cartesian3Scratch = new Cartesian3();
+    const cartesian3Scratch = new Cartesian3();
 
     ZoomNavigationControl.prototype.zoom = function (relativeAmount) {
         // this.terria.analytics.logEvent('navigation', 'click', 'zoomIn');
@@ -82,9 +82,9 @@ define([
         this.isActive = true;
 
         if (defined(this.terria)) {
-            var scene = this.terria.scene;
+            const scene = this.terria.scene;
 
-            var sscc = scene.screenSpaceCameraController;
+            const sscc = scene.screenSpaceCameraController;
             // do not zoom if it is disabled
             if (!sscc.enableInputs || !sscc.enableZoom) {
                 return;
@@ -94,8 +94,8 @@ define([
 //                return;
 //            }
 
-            var camera = scene.camera;
-            var orientation;
+            const camera = scene.camera;
+            const orientation;
 
             switch (scene.mode) {
                 case SceneMode.MORPHING:
@@ -104,7 +104,7 @@ define([
                     camera.zoomIn(camera.positionCartographic.height * (1 - this.relativeAmount));
                     break;
                 default:
-                    var focus;
+                    const focus;
 
                     if(defined(this.terria.trackedEntity)) {
                         focus = new Cartesian3();
@@ -115,7 +115,7 @@ define([
                     if (!defined(focus)) {
                         // Camera direction is not pointing at the globe, so use the ellipsoid horizon point as
                         // the focal point.
-                        var ray = new Ray(camera.worldToCameraCoordinatesPoint(scene.globe.ellipsoid.cartographicToCartesian(camera.positionCartographic)), camera.directionWC);
+                        const ray = new Ray(camera.worldToCameraCoordinatesPoint(scene.globe.ellipsoid.cartographicToCartesian(camera.positionCartographic)), camera.directionWC);
                         focus = IntersectionTests.grazingAltitudeLocation(ray, scene.globe.ellipsoid);
 
                         orientation = {
@@ -130,9 +130,9 @@ define([
                         };
                     }
 
-                    var direction = Cartesian3.subtract(camera.position, focus, cartesian3Scratch);
-                    var movementVector = Cartesian3.multiplyByScalar(direction, relativeAmount, direction);
-                    var endPosition = Cartesian3.add(focus, movementVector, focus);
+                    const direction = Cartesian3.subtract(camera.position, focus, cartesian3Scratch);
+                    const movementVector = Cartesian3.multiplyByScalar(direction, relativeAmount, direction);
+                    const endPosition = Cartesian3.add(focus, movementVector, focus);
 
                     if (defined(this.terria.trackedEntity) || scene.mode == SceneMode.COLUMBUS_VIEW) {
                         // sometimes flyTo does not work (jumps to wrong position) so just set the position without any animation

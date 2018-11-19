@@ -42,7 +42,7 @@ define([
 {
     'use strict';
 
-    var NavigationViewModel = function (options)
+    const NavigationViewModel = function (options)
     {
 
         this.terria = options.terria;
@@ -91,7 +91,7 @@ define([
 
         Knockout.track(this, ['controls', 'showCompass', 'heading', 'isOrbiting', 'orbitCursorAngle', 'isRotating']);
 
-        var that = this;
+        const that = this;
 
 
         NavigationViewModel.prototype.setNavigationLocked = function (locked)
@@ -149,7 +149,7 @@ define([
 
     NavigationViewModel.prototype.show = function (container)
     {
-        var testing;
+        const testing;
         if (this.enableZoomControls && this.enableCompass)
         {
             testing = '<div class="compass" title="Drag outer ring: rotate view. ' +
@@ -283,11 +283,11 @@ define([
         return (control === this.controls[this.controls.length - 1]);
     };
 
-    var vectorScratch = new Cartesian2();
+    const vectorScratch = new Cartesian2();
 
     NavigationViewModel.prototype.handleMouseDown = function (viewModel, e)
     {
-        var scene = this.terria.scene;
+        const scene = this.terria.scene;
         if (scene.mode === SceneMode.MORPHING)
         {
             return true;
@@ -297,18 +297,18 @@ define([
             return true;
         }
 
-        var compassElement = e.currentTarget;
-        var compassRectangle = e.currentTarget.getBoundingClientRect();
-        var maxDistance = compassRectangle.width / 2.0;
-        var center = new Cartesian2((compassRectangle.right - compassRectangle.left) / 2.0, (compassRectangle.bottom - compassRectangle.top) / 2.0);
-        var clickLocation = new Cartesian2(e.clientX - compassRectangle.left, e.clientY - compassRectangle.top);
-        var vector = Cartesian2.subtract(clickLocation, center, vectorScratch);
-        var distanceFromCenter = Cartesian2.magnitude(vector);
+        const compassElement = e.currentTarget;
+        const compassRectangle = e.currentTarget.getBoundingClientRect();
+        const maxDistance = compassRectangle.width / 2.0;
+        const center = new Cartesian2((compassRectangle.right - compassRectangle.left) / 2.0, (compassRectangle.bottom - compassRectangle.top) / 2.0);
+        const clickLocation = new Cartesian2(e.clientX - compassRectangle.left, e.clientY - compassRectangle.top);
+        const vector = Cartesian2.subtract(clickLocation, center, vectorScratch);
+        const distanceFromCenter = Cartesian2.magnitude(vector);
 
-        var distanceFraction = distanceFromCenter / maxDistance;
+        const distanceFraction = distanceFromCenter / maxDistance;
 
-        var nominalTotalRadius = 145;
-        var norminalGyroRadius = 50;
+        const nominalTotalRadius = 145;
+        const norminalGyroRadius = 50;
 
         if (distanceFraction < norminalGyroRadius / nominalTotalRadius)
         {
@@ -326,16 +326,16 @@ define([
         }
     };
 
-    var oldTransformScratch = new Matrix4();
-    var newTransformScratch = new Matrix4();
-    var centerScratch = new Cartesian3();
+    const oldTransformScratch = new Matrix4();
+    const newTransformScratch = new Matrix4();
+    const centerScratch = new Cartesian3();
 
     NavigationViewModel.prototype.handleDoubleClick = function (viewModel, e)
     {
-        var scene = viewModel.terria.scene;
-        var camera = scene.camera;
+        const scene = viewModel.terria.scene;
+        const camera = scene.camera;
 
-        var sscc = scene.screenSpaceCameraController;
+        const sscc = scene.screenSpaceCameraController;
 
         if (scene.mode == SceneMode.MORPHING || !sscc.enableInputs)
         {
@@ -365,7 +365,7 @@ define([
             }
         }
 
-        var center = Utils.getCameraFocus(viewModel.terria, true, centerScratch);
+        const center = Utils.getCameraFocus(viewModel.terria, true, centerScratch);
 
         if (!defined(center))
         {
@@ -375,11 +375,11 @@ define([
             return;
         }
 
-        var cameraPosition = scene.globe.ellipsoid.cartographicToCartesian(camera.positionCartographic, new Cartesian3());
+        const cameraPosition = scene.globe.ellipsoid.cartographicToCartesian(camera.positionCartographic, new Cartesian3());
 
-        var surfaceNormal = scene.globe.ellipsoid.geodeticSurfaceNormal(center);
+        const surfaceNormal = scene.globe.ellipsoid.geodeticSurfaceNormal(center);
 
-        var focusBoundingSphere = new BoundingSphere(center, 0);
+        const focusBoundingSphere = new BoundingSphere(center, 0);
 
         camera.flyToBoundingSphere(focusBoundingSphere, {
             offset: new HeadingPitchRange(0,
@@ -401,17 +401,17 @@ define([
     {
         //options.enableZoomControls = this.enableZoomControls;
         //options.enableCompass = this.enableCompass;
-        var result = new NavigationViewModel(options);
+        const result = new NavigationViewModel(options);
         result.show(options.container);
         return result;
     };
 
     function orbit(viewModel, compassElement, cursorVector)
     {
-        var scene = viewModel.terria.scene;
+        const scene = viewModel.terria.scene;
 
 
-        var sscc = scene.screenSpaceCameraController;
+        const sscc = scene.screenSpaceCameraController;
 
         // do not orbit if it is disabled
         if (scene.mode == SceneMode.MORPHING || !sscc.enableInputs)
@@ -471,7 +471,7 @@ define([
         viewModel.isOrbiting = true;
         viewModel.orbitLastTimestamp = getTimestamp();
 
-        var camera = scene.camera;
+        const camera = scene.camera;
 
         if (defined(viewModel.terria.trackedEntity))
         {
@@ -481,7 +481,7 @@ define([
         }
         else
         {
-            var center = Utils.getCameraFocus(viewModel.terria, true, centerScratch);
+            const center = Utils.getCameraFocus(viewModel.terria, true, centerScratch);
 
             if (!defined(center))
             {
@@ -497,16 +497,16 @@ define([
 
         viewModel.orbitTickFunction = function (e)
         {
-            var timestamp = getTimestamp();
-            var deltaT = timestamp - viewModel.orbitLastTimestamp;
-            var rate = (viewModel.orbitCursorOpacity - 0.5) * 2.5 / 1000;
-            var distance = deltaT * rate;
+            const timestamp = getTimestamp();
+            const deltaT = timestamp - viewModel.orbitLastTimestamp;
+            const rate = (viewModel.orbitCursorOpacity - 0.5) * 2.5 / 1000;
+            const distance = deltaT * rate;
 
-            var angle = viewModel.orbitCursorAngle + CesiumMath.PI_OVER_TWO;
-            var x = Math.cos(angle) * distance;
-            var y = Math.sin(angle) * distance;
+            const angle = viewModel.orbitCursorAngle + CesiumMath.PI_OVER_TWO;
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
 
-            var oldTransform;
+            const oldTransform;
 
             if (viewModel.navigationLocked)
             {
@@ -551,13 +551,13 @@ define([
 
         function updateAngleAndOpacity(vector, compassWidth)
         {
-            var angle = Math.atan2(-vector.y, vector.x);
+            const angle = Math.atan2(-vector.y, vector.x);
             viewModel.orbitCursorAngle = CesiumMath.zeroToTwoPi(angle - CesiumMath.PI_OVER_TWO);
 
-            var distance = Cartesian2.magnitude(vector);
-            var maxDistance = compassWidth / 2.0;
-            var distanceFraction = Math.min(distance / maxDistance, 1.0);
-            var easedOpacity = 0.5 * distanceFraction * distanceFraction + 0.5;
+            const distance = Cartesian2.magnitude(vector);
+            const maxDistance = compassWidth / 2.0;
+            const distanceFraction = Math.min(distance / maxDistance, 1.0);
+            const easedOpacity = 0.5 * distanceFraction * distanceFraction + 0.5;
             viewModel.orbitCursorOpacity = easedOpacity;
 
             //viewModel.terria.cesium.notifyRepaintRequired();
@@ -565,10 +565,10 @@ define([
 
         viewModel.orbitMouseMoveFunction = function (e)
         {
-            var compassRectangle = compassElement.getBoundingClientRect();
-            var center = new Cartesian2((compassRectangle.right - compassRectangle.left) / 2.0, (compassRectangle.bottom - compassRectangle.top) / 2.0);
-            var clickLocation = new Cartesian2(e.clientX - compassRectangle.left, e.clientY - compassRectangle.top);
-            var vector = Cartesian2.subtract(clickLocation, center, vectorScratch);
+            const compassRectangle = compassElement.getBoundingClientRect();
+            const center = new Cartesian2((compassRectangle.right - compassRectangle.left) / 2.0, (compassRectangle.bottom - compassRectangle.top) / 2.0);
+            const clickLocation = new Cartesian2(e.clientX - compassRectangle.left, e.clientY - compassRectangle.top);
+            const vector = Cartesian2.subtract(clickLocation, center, vectorScratch);
             updateAngleAndOpacity(vector, compassRectangle.width);
         };
 
@@ -599,10 +599,10 @@ define([
 
     function rotate(viewModel, compassElement, cursorVector)
     {
-        var scene = viewModel.terria.scene;
-        var camera = scene.camera;
+        const scene = viewModel.terria.scene;
+        const camera = scene.camera;
 
-        var sscc = scene.screenSpaceCameraController;
+        const sscc = scene.screenSpaceCameraController;
         // do not rotate in 2D mode or if rotating is disabled
         if (scene.mode == SceneMode.MORPHING || scene.mode == SceneMode.SCENE2D || !sscc.enableInputs)
         {
@@ -636,7 +636,7 @@ define([
         }
         else
         {
-            var viewCenter = Utils.getCameraFocus(viewModel.terria, true, centerScratch);
+            const viewCenter = Utils.getCameraFocus(viewModel.terria, true, centerScratch);
 
             if (!defined(viewCenter) || (scene.mode == SceneMode.COLUMBUS_VIEW && !sscc.enableLook && !sscc.enableTranslate))
             {
@@ -650,7 +650,7 @@ define([
             }
         }
 
-        var oldTransform;
+        const oldTransform;
         if (defined(viewModel.rotateFrame))
         {
             oldTransform = Matrix4.clone(camera.transform, oldTransformScratch);
@@ -666,25 +666,25 @@ define([
 
         viewModel.rotateMouseMoveFunction = function (e)
         {
-            var compassRectangle = compassElement.getBoundingClientRect();
-            var center = new Cartesian2((compassRectangle.right - compassRectangle.left) / 2.0, (compassRectangle.bottom - compassRectangle.top) / 2.0);
-            var clickLocation = new Cartesian2(e.clientX - compassRectangle.left, e.clientY - compassRectangle.top);
-            var vector = Cartesian2.subtract(clickLocation, center, vectorScratch);
-            var angle = Math.atan2(-vector.y, vector.x);
+            const compassRectangle = compassElement.getBoundingClientRect();
+            const center = new Cartesian2((compassRectangle.right - compassRectangle.left) / 2.0, (compassRectangle.bottom - compassRectangle.top) / 2.0);
+            const clickLocation = new Cartesian2(e.clientX - compassRectangle.left, e.clientY - compassRectangle.top);
+            const vector = Cartesian2.subtract(clickLocation, center, vectorScratch);
+            const angle = Math.atan2(-vector.y, vector.x);
 
-            var angleDifference = angle - viewModel.rotateInitialCursorAngle;
-            var newCameraAngle = CesiumMath.zeroToTwoPi(viewModel.rotateInitialCameraAngle - angleDifference);
+            const angleDifference = angle - viewModel.rotateInitialCursorAngle;
+            const newCameraAngle = CesiumMath.zeroToTwoPi(viewModel.rotateInitialCameraAngle - angleDifference);
 
-            var camera = viewModel.terria.scene.camera;
+            const camera = viewModel.terria.scene.camera;
 
-            var oldTransform;
+            const oldTransform;
             if (defined(viewModel.rotateFrame))
             {
                 oldTransform = Matrix4.clone(camera.transform, oldTransformScratch);
                 camera.lookAtTransform(viewModel.rotateFrame);
             }
 
-            var currentCameraAngle = -camera.heading;
+            const currentCameraAngle = -camera.heading;
             camera.rotateRight(newCameraAngle - currentCameraAngle);
 
             if (defined(viewModel.rotateFrame))

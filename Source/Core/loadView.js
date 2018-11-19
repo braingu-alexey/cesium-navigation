@@ -1,40 +1,29 @@
-/*global require*/
-define([
-    'Cesium/Widgets/getElement',
-    'KnockoutES5',
-    'Core/createFragmentFromTemplate'
-], function (
-    getElement,
-    Knockout,
-    createFragmentFromTemplate) {
-    'use strict';
+import { getElement } from 'cesium';
+import Knockout from 'knockout-es5';
+import createFragmentFromTemplate from './createFragmentFromTemplate';
 
-    var loadView = function (htmlString, container, viewModel) {
-        container = getElement(container);
+export default function loadView(htmlString, _container, viewModel) {
+  const container = getElement(_container);
 
-        var fragment = createFragmentFromTemplate(htmlString);
+  const fragment = createFragmentFromTemplate(htmlString);
 
-        // Sadly, fragment.childNodes doesn't have a slice function.
-        // This code could be replaced with Array.prototype.slice.call(fragment.childNodes)
-        // but that seems slightly error prone.
-        var nodes = [];
+  // Sadly, fragment.childNodes doesn't have a slice function.
+  // This code could be replaced with Array.prototype.slice.call(fragment.childNodes)
+  // but that seems slightly error prone.
+  const nodes = [];
 
-        var i;
-        for (i = 0; i < fragment.childNodes.length; ++i) {
-            nodes.push(fragment.childNodes[i]);
-        }
+  for (let i = 0; i < fragment.childNodes.length; ++i) {
+    nodes.push(fragment.childNodes[i]);
+  }
 
-        container.appendChild(fragment);
+  container.appendChild(fragment);
 
-        for (i = 0; i < nodes.length; ++i) {
-            var node = nodes[i];
-            if (node.nodeType === 1 || node.nodeType === 8) {
-                Knockout.applyBindings(viewModel, node);
-            }
-        }
+  for (let i = 0; i < nodes.length; ++i) {
+    const node = nodes[i];
+    if (node.nodeType === 1 || node.nodeType === 8) {
+      Knockout.applyBindings(viewModel, node);
+    }
+  }
 
-        return nodes;
-    };
-
-    return loadView;
-});
+  return nodes;
+}

@@ -14,7 +14,7 @@
      * @param {Number} durationSubCircle The duration in milliseconds to orbit the sub circle
      * @param {Cesium.Ellipsoid} [ellipsoid=Cesium.Ellipsoid.WGS84] The ellipsoid to convert cartographic to cartesian
      */
-    var SpirographPositionProperty = function (center, radiusMedian, radiusSubCircle, durationMedianCircle, durationSubCircle, ellipsoid) {
+    const SpirographPositionProperty = function (center, radiusMedian, radiusSubCircle, durationMedianCircle, durationSubCircle, ellipsoid) {
         this._center = center;
         this._radiusMedian = radiusMedian;
         this._radiusSubCircle = radiusSubCircle;
@@ -82,7 +82,7 @@
         return this.getValueInReferenceFrame(time, Cesium.ReferenceFrame.FIXED, result);
     };
 
-    var cartographicScratch = new Cesium.Cartographic();
+    const cartographicScratch = new Cesium.Cartographic();
 
     /**
      * Gets the value of the property at the provided time and in the provided reference frame.
@@ -94,9 +94,9 @@
      * @returns {Cartesian3} The modified result parameter or a new instance if the result parameter was not supplied.
      */
     SpirographPositionProperty.prototype.getValueInReferenceFrame = function (time, referenceFrame, result) {
-        var milliseconds = Cesium.JulianDate.toDate(time).getTime();
+        const milliseconds = Cesium.JulianDate.toDate(time).getTime();
 
-        var radius = this._radiusMedian + this._radiusSubCircle * Math.sin(2 * Math.PI * (milliseconds / this._durationSubCircle));
+        const radius = this._radiusMedian + this._radiusSubCircle * Math.sin(2 * Math.PI * (milliseconds / this._durationSubCircle));
 
         cartographicScratch.latitude = this._center.latitude + radius * Math.cos(2 * Math.PI * (milliseconds / this._durationMedianCircle));
         cartographicScratch.longitude = this._center.longitude + radius * Math.sin(2 * Math.PI * (milliseconds / this._durationMedianCircle));

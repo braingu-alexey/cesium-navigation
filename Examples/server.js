@@ -3,11 +3,11 @@
     /*global console,require,__dirname,process*/
     /*jshint es3:false*/
 
-    var express = require('express');
-    var compression = require('compression');
-    var path = require('path');
+    const express = require('express');
+    const compression = require('compression');
+    const path = require('path');
 
-    var yargs = require('yargs').options({
+    const yargs = require('yargs').options({
         'port' : {
             'default' : process.env.PORT || 8080,
             'description' : 'Port to listen on.'
@@ -22,7 +22,7 @@
             'description' : 'Show this help.'
         }
     });
-    var argv = yargs.argv;
+    const argv = yargs.argv;
 
     if (argv.help) {
         return yargs.showHelp();
@@ -30,13 +30,13 @@
 
     // eventually this mime type configuration will need to change
     // https://github.com/visionmedia/send/commit/d2cb54658ce65948b0ed6e5fb5de69d022bef941
-    var mime = express.static.mime;
+    const mime = express.static.mime;
     mime.define({
         'application/json' : ['czml', 'json', 'geojson', 'topojson', 'gltf'],
         'text/plain' : ['glsl']
     });
 
-    var app = express();
+    const app = express();
     app.use(compression());
     app.use(express.static(__dirname));
     // don't forget to copy necessary files when preparing the gh-pages on github since there is no redirecting
@@ -47,9 +47,9 @@
     app.use('/bower_components', express.static(path.join(__dirname, '..', 'bower_components')));
     app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));
 
-    var serverName = 'Cesium navigation examples server';
+    const serverName = 'Cesium navigation examples server';
 
-    var server = app.listen(argv.port, argv.public ? undefined : 'localhost', function() {
+    const server = app.listen(argv.port, argv.public ? undefined : 'localhost', function() {
         if (argv.public) {
             console.log(serverName + ' is running publicly.');
             console.log('\tConnect to http://\<your_ip\>:%d, e.g. http://localhost:%d', server.address().port, server.address().port);
@@ -74,7 +74,7 @@
     });
 
     // Maintain an array of all connected sockets
-    var sockets = [];
+    const sockets = [];
     server.on('connection', function (socket) {
         // Add a newly connected socket
         sockets.push(socket);
@@ -85,10 +85,10 @@
         });
     });
 
-    var shutdownSever = function() {
+    const shutdownSever = function() {
         server.close();
 
-        for (var i = 0; i < sockets.length; i++) {
+        for (const i = 0; i < sockets.length; i++) {
             sockets[i].destroy();
         }
     };

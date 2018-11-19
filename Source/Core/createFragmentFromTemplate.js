@@ -1,20 +1,11 @@
-/*global define*/
-define([
-], function () {
-    'use strict';
+export default function createFragmentFromTemplate(htmlString) {
+  const holder = document.createElement('div');
+  holder.innerHTML = htmlString;
 
-    var createFragmentFromTemplate = function (htmlString) {
-        var holder = document.createElement('div');
-        holder.innerHTML = htmlString;
+  const fragment = document.createDocumentFragment();
+  while (holder.firstChild) {
+    fragment.appendChild(holder.firstChild);
+  }
 
-        var fragment = document.createDocumentFragment();
-        while (holder.firstChild) {
-            fragment.appendChild(holder.firstChild);
-        }
-
-        return fragment;
-    };
-
-    return createFragmentFromTemplate;
-});
-
+  return fragment;
+}

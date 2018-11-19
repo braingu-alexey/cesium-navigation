@@ -14,7 +14,7 @@ define([
      *
      * @param {Terria} terria The Terria instance.
      */
-    var NavigationControl = function (terria) {
+    const NavigationControl = function (terria) {
         UserInterfaceControl.apply(this, arguments);
     };
 

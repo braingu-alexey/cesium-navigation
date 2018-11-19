@@ -1,42 +1,82 @@
 {
-    "name": "cesium-navigation",
-    "version": "1.1.4",
-    "description": "Cesium plugin that adds a compass, navigator, and distance scale to the map",
-    "main": "viewerCesiumNavigationMixin",
-    "dependencies": {
-        "bower": "*"
-    },
-    "devDependencies": {
-        "fs-extra": "^0.26.5",
-        "csso": "^1.5.4",
-        "less": "^1.7.5",
-        "node-minify": "^1.3.7",
-        "express": "~4.9.x",
-        "compression": "1.0.8",
-        "yargs": "1.2.6",
-        "requirejs": "^2.1.22",
-        "cesium": "^1.20.0"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "postinstall": "bower install"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/alberto-acevedo/cesium-navigation.git"
-    },
-    "keywords": [
-        "cesium",
-        "navigation",
-        "compass",
-        "navigator",
-        "distance",
-        "scale"
-    ],
-    "author": "alberto acevedo",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/alberto-acevedo/cesium-navigation/issues"
-    },
-    "homepage": "https://github.com/alberto-acevedo/cesium-navigation#readme"
+  "name": "@znemz/cesium-navigation",
+  "version": "1.1.4",
+  "description": "Cesium plugin that adds a compass, navigator, and distance scale to the map",
+  "main": "dist/index.js",
+  "browser": "dist/browser.js",
+  "module": "dist/esm.js",
+  "dependencies": {
+    "@znemz/eslint-config-react": "^0.0.3",
+    "@znemz/prettier-config": "^0.0.1",
+    "almond": "^0.3.2",
+    "hammerjs": "^2.0.8",
+    "knockout": "^3.4.0",
+    "knockout-es5": "^0.4.4",
+    "markdown-it-sanitizer": "^0.4.1",
+    "markdown-it": "^7.0.0",
+    "babel-cli": "6",
+    "babel-core": "6",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-class-properties": "6",
+    "babel-plugin-transform-object-rest-spread": "6",
+    "babel-preset-env": "^1.7",
+    "cesium": "1.48.0",
+    "change-case": "^3.0.2",
+    "debug-fabulous": "^1.0.0",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "23",
+    "jest-extended": "^0.8",
+    "prettier": "^1.15.2",
+    "rollup": "^0.67.1",
+    "rollup-plugin-babel": "^3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "sort-package-json": "^1.15.0"
+  },
+  "devDependencies": {
+    "compression": "1.0.8",
+    "csso": "^1.5.4",
+    "express": "~4.9.x",
+    "fs-extra": "^0.26.5",
+    "less": "^1.7.5",
+    "less-loader": "^4.1.0",
+    "node-minify": "^1.3.7",
+    "requirejs": "^2.1.22",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.26.0",
+    "yargs": "1.2.6"
+  },
+  "scripts": {
+    "prebuild": "yarn sort-package-json & yarn clean",
+    "build": "rollup -c",
+    "clean": "rm -rf dist",
+    "format": "prettier-eslint --config --write '{Source,test,Test}/**/*.js'",
+    "lint": "eslint --fix '{Source,Test,test}/**/*.js'",
+    "prepublishOnly": "yarn build",
+    "start": "rollup -c -w",
+    "pretest": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alberto-acevedo/cesium-navigation.git"
+  },
+  "keywords": [
+    "cesium",
+    "navigation",
+    "compass",
+    "navigator",
+    "distance",
+    "scale"
+  ],
+  "author": "alberto acevedo",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/alberto-acevedo/cesium-navigation/issues"
+  },
+  "homepage": "https://github.com/alberto-acevedo/cesium-navigation#readme"
 }

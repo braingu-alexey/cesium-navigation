@@ -2,22 +2,22 @@
     "use strict";
     /*jshint node:true*/
 
-    var sourceDir = 'Source';
-    var buildDir = 'dist',
+    const sourceDir = 'Source';
+    const buildDir = 'dist',
         standaloneSubDir = 'standalone',
         amdSubDir = 'amd',
         buildName = 'viewerCesiumNavigationMixin';
-    var examplesDir = 'Examples';
+    const examplesDir = 'Examples';
 
-    var requirejs = require('requirejs');
+    const requirejs = require('requirejs');
 
-    var path = require('path');
-    var fs = require('fs-extra');
+    const path = require('path');
+    const fs = require('fs-extra');
 
-    var nodeMinify = require('node-minify');
+    const nodeMinify = require('node-minify');
 
-    var minify = function (fileIn, callback) {
-        var fileOut = path.join(path.dirname(fileIn), path.basename(fileIn, path.extname(fileIn)) + '.min' + path.extname(fileIn));
+    const minify = function (fileIn, callback) {
+        const fileOut = path.join(path.dirname(fileIn), path.basename(fileIn, path.extname(fileIn)) + '.min' + path.extname(fileIn));
 
         new nodeMinify.minify({
             type: 'uglifyjs',
@@ -34,13 +34,13 @@
         });
     };
 
-    var shimsGlobal = {},
+    const shimsGlobal = {},
         shimsBuild = {};
-    var licenseComments = [];
+    const licenseComments = [];
 
-    var findAllCesiumReferences = function (absPath) {
+    const findAllCesiumReferences = function (absPath) {
         if (fs.lstatSync(absPath).isDirectory()) {
-            var files = fs.readdirSync(absPath);
+            const files = fs.readdirSync(absPath);
 
             files.forEach(function (subpath) {
                 findAllCesiumReferences(path.join(absPath, subpath));
@@ -50,14 +50,14 @@
             return;
         }
 
-        var contents = fs.readFileSync(absPath).toString();
+        const contents = fs.readFileSync(absPath).toString();
 
         if (/\.js$/.test(absPath)) {
             // Search for Cesium modules and add shim
             // modules that pull from the Cesium global
 
-            var cesiumRequireRegex = /['"](Cesium\/\w*\/(\w*))['"]/g;
-            var match;
+            const cesiumRequireRegex = /['"](Cesium\/\w*\/(\w*))['"]/g;
+            const match;
             while ((match = cesiumRequireRegex.exec(contents)) !== null) {
                 if (!(match[1] in shimsGlobal)) {
                     shimsGlobal[match[1]] = 'define(\'' + match[1] + '\', function() { return Cesium[\'' + match[2] + '\']; });';
@@ -67,19 +67,19 @@
                 }
             }
         } else if (/\.glsl$/.test(absPath)) {
-            var newContents = [];
+            const newContents = [];
 
             contents = contents.replace(/\r\n/gm, '\n');
 
-            var licenseComments = contents.match(/\/\*\*(?:[^*\/]|\*(?!\/)|\n)*?@license(?:.|\n)*?\*\//gm);
+            const licenseComments = contents.match(/\/\*\*(?:[^*\/]|\*(?!\/)|\n)*?@license(?:.|\n)*?\*\//gm);
             if (licenseComments !== null) {
                 licenseComments = licenseComments.concat(licenseComments);
             }
 
             // Remove comments. Code ported from
             // https://github.com/apache/ant/blob/master/src/main/org/apache/tools/ant/filters/StripJavaComments.java
-            for (var i = 0; i < contents.length; ++i) {
-                var c = contents.charAt(i);
+            for (const i = 0; i < contents.length; ++i) {
+                const c = contents.charAt(i);
                 if (c === '/') {
                     c = contents.charAt(++i);
                     if (c === '/') {
@@ -122,11 +122,11 @@
         return shimsBuild[key];
     }).join('\n');
 
-    var copyrightHeader = fs.readFileSync(sourceDir + '/copyrightHeader.js').toString();
+    const copyrightHeader = fs.readFileSync(sourceDir + '/copyrightHeader.js').toString();
 
 
     // <-- build standalone edition
-    var rjsBasicConfig = {
+    const rjsBasicConfig = {
         mainConfigFile: 'mainConfig.js',
         wrap: {
             start: copyrightHeader + '\n' +
@@ -155,7 +155,7 @@
                 "    " + licenseComments.join('\n        ') + "\n" +
                 shimsGlobal + "\n" +
                 "    \n" +
-                "    var mixin = require('viewerCesiumNavigationMixin');\n" +
+                "    const mixin = require('viewerCesiumNavigationMixin');\n" +
                 "    if (typeof Cesium === 'object' && Cesium !== null) {\n" +
                 "        Cesium['" + buildName + "'] = mixin;\n" +
                 "    }\n\n" +
@@ -167,7 +167,7 @@
         logLevel: 0
     };
 
-    var rjsConfig = JSON.parse(JSON.stringify(rjsBasicConfig));
+    const rjsConfig = JSON.parse(JSON.stringify(rjsBasicConfig));
     rjsConfig.optimize = 'none';
     rjsConfig.out = path.join(buildDir, standaloneSubDir, buildName + '.js');
 
@@ -182,7 +182,7 @@
 
 
     // <-- build amd compatible edition
-    var rjsAMDBasicConfig = {
+    const rjsAMDBasicConfig = {
         mainConfigFile: 'mainConfig.js',
         name: 'viewerCesiumNavigationMixin',
         wrap: {
@@ -203,7 +203,7 @@
         logLevel: 0
     };
 
-    var rjsAMDConfig = JSON.parse(JSON.stringify(rjsAMDBasicConfig));
+    const rjsAMDConfig = JSON.parse(JSON.stringify(rjsAMDBasicConfig));
     rjsAMDConfig.optimize = 'none';
     rjsAMDConfig.out = path.join(buildDir, amdSubDir, buildName + '.js');
     requirejs.optimize(rjsAMDConfig, function (buildResponse) {

@@ -20,7 +20,7 @@ define([
      *
      * @param {Terria} terria The Terria instance.
      */
-    var UserInterfaceControl = function (terria) {
+    const UserInterfaceControl = function (terria) {
 
         if (!defined(terria)) {
             throw new DeveloperError('terria is required');

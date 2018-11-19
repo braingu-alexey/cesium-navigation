@@ -1,9 +1,9 @@
 // This only builds the sources for the example amd.html
 // all other examples do not need to be built.
 
-var requirejs = require('requirejs');
+const requirejs = require('requirejs');
 
-var config = {
+const config = {
     baseUrl: '.',
     optimize: 'uglify2',
     mainConfigFile: 'Source/mainConfig.js',

@@ -25,7 +25,7 @@ define([
      *
      * @param {Terria} terria The Terria instance.
      */
-    var ResetViewNavigationControl = function (terria)
+    const ResetViewNavigationControl = function (terria)
     {
         NavigationControl.apply(this, arguments);
 
@@ -77,9 +77,9 @@ define([
         {
             return;
         }
-        var scene = this.terria.scene;
+        const scene = this.terria.scene;
 
-        var sscc = scene.screenSpaceCameraController;
+        const sscc = scene.screenSpaceCameraController;
         if (!sscc.enableInputs)
         {
             return;
@@ -87,12 +87,12 @@ define([
 
         this.isActive = true;
 
-        var camera = scene.camera;
+        const camera = scene.camera;
 
         if (defined(this.terria.trackedEntity))
         {
             // when tracking do not reset to default view but to default view of tracked entity
-            var trackedEntity = this.terria.trackedEntity;
+            const trackedEntity = this.terria.trackedEntity;
             this.terria.trackedEntity = undefined;
             this.terria.trackedEntity = trackedEntity;
         }

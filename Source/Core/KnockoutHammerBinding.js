@@ -1,33 +1,26 @@
-/*global require*/
-define([
-    'KnockoutES5',
-    'Hammer'
-], function (Knockout, Hammer) {
-    'use strict';
+import Knockout from 'knockout-es5';
+import Hammer from 'hammerjs';
 
-    var KnockoutHammerBinding = {
-        register: function (Knockout) {
-            Knockout.bindingHandlers.swipeLeft = {
-                init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                    var f = Knockout.unwrap(valueAccessor());
-                    new Hammer(element).on('swipeleft', function (e) {
-                        var viewModel = bindingContext.$data;
-                        f.apply(viewModel, arguments);
-                    });
-                }
-            };
-
-            Knockout.bindingHandlers.swipeRight = {
-                init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                    var f = Knockout.unwrap(valueAccessor());
-                    new Hammer(element).on('swiperight', function (e) {
-                        var viewModel = bindingContext.$data;
-                        f.apply(viewModel, arguments);
-                    });
-                }
-            };
-        }
+export const KnockoutHammerBinding = {
+  register() {
+    Knockout.bindingHandlers.swipeLeft = {
+      init(element, valueAccessor, allBindings, _viewModel, bindingContext) {
+        const f = Knockout.unwrap(valueAccessor());
+        new Hammer(element).on('swipeleft', (...args) => {
+          const viewModel = bindingContext.$data;
+          f.apply(viewModel, args);
+        });
+      }
     };
 
-    return KnockoutHammerBinding;
-});
+    Knockout.bindingHandlers.swipeRight = {
+      init(element, valueAccessor, allBindings, _viewModel, bindingContext) {
+        const f = Knockout.unwrap(valueAccessor());
+        new Hammer(element).on('swiperight', (...args) => {
+          const viewModel = bindingContext.$data;
+          f.apply(viewModel, args);
+        });
+      }
+    };
+  }
+};
