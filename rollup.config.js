@@ -1,16 +1,18 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
+import less from 'rollup-plugin-less'; // eslint-disable-line
+import json from 'rollup-plugin-json';
 
 import pkg from './package.json';
 
 const globals = {
-  lodash: 'lodash',
-  immutable: 'immutable'
+  cesium: 'cesium',
+  knockout: 'knockout'
 };
 
 export default {
-  input: 'src/index.js',
+  input: 'Source/viewerCesiumNavigationMixin.js',
   output: [
     {
       file: pkg.browser,
@@ -34,13 +36,15 @@ export default {
   external: Object.keys(globals),
   plugins: [
     babel({
-      exclude: 'node_modules/**',
+      exclude: ['node_modules/**', '**/*.less'],
       externalHelpers: false,
       runtimeHelpers: true
     }),
     resolve({
       browser: true
     }),
-    commonjs()
+    commonjs(),
+    less({ output: pkg.mainCss }),
+    json()
   ]
 };

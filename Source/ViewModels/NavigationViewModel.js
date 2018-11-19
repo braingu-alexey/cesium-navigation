@@ -584,7 +584,7 @@ function orbit(_viewModel, compassElement, cursorVector) {
 function rotate(_viewModel, compassElement, cursorVector) {
   const viewModel = _viewModel;
   const { scene } = viewModel.terria;
-  const { camera } = scene;
+  let { camera } = scene;
 
   const sscc = scene.screenSpaceCameraController;
   // do not rotate in 2D mode or if rotating is disabled

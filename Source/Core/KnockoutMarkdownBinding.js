@@ -43,7 +43,7 @@ export const KnockoutMarkdownBinding = {
         const nodes = knockoutEle.utils.parseHtmlFragment(html, element);
         element.className = `${element.className} markdown`;
 
-        for (const i = 0; i < nodes.length; ++i) {
+        for (let i = 0; i < nodes.length; ++i) {
           const node = nodes[i];
           setAnchorTargets(node);
           element.appendChild(node);
@@ -60,7 +60,7 @@ function setAnchorTargets(_element) {
   }
 
   if (element.childNodes && element.childNodes.length > 0) {
-    for (const i = 0; i < element.childNodes.length; ++i) {
+    for (let i = 0; i < element.childNodes.length; ++i) {
       setAnchorTargets(element.childNodes[i]);
     }
   }

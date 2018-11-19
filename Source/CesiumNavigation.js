@@ -181,5 +181,3 @@ function initialize(viewerCesiumWidget, options) {
     //            });
   }
 }
-
-return CesiumNavigation;
