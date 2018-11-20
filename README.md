@@ -3,6 +3,13 @@
 This is a Cesium plugin that adds to the Cesium map a user friendly compass, navigator (zoom in/out), and
 distance scale graphical user interface.
 
+This project was forked to provide a stable non-requirejs implementation to be more modern and be publishable to npm. There
+is no need to conform to Cesium's insanity of requirejs when tools like webpack and rollup exist.
+
+## How to get it
+
+`yarn install @znemz/cesium-navigation`
+
 ## Why did you build it
 
 First of all the Cesiumjs sdk does not include a compass, navigator (zoom in/out) nor distance scale. You can use the mouse to navigate on the map but this navigation plugin offers more navigation control and capabilities to the user.
