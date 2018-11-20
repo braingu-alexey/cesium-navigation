@@ -43,7 +43,7 @@
   "browser": "dist/browser.js",
   "dependencies": {
     "almond": "^0.3.2",
-    "cesium": ">=1.48",
+    "cesium": "^1.48",
     "hammerjs": "^2.0.8",
     "knockout": "^3.4.0",
     "knockout-es5": "^0.4.4",
@@ -51,7 +51,7 @@
     "markdown-it-sanitizer": "^0.4.1"
   },
   "devDependencies": {
-    "@znemz/cesium-webpack-config": "^0.1",
+    "@znemz/cesium-webpack-config": "0.1.2",
     "@znemz/eslint-config-react": "^0.0.3",
     "@znemz/prettier-config": "^0.0.1",
     "babel-cli": "6",

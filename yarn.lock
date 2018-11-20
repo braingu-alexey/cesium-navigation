@@ -233,13 +233,12 @@
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
 
-"@znemz/cesium-webpack-config@^0.1":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@znemz/cesium-webpack-config/-/cesium-webpack-config-0.1.0.tgz#99812ffdd25ea067bb0279a0e3de57db22ac5538"
+"@znemz/cesium-webpack-config@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@znemz/cesium-webpack-config/-/cesium-webpack-config-0.1.2.tgz#003d0c410601e3b23be41bedcd23e253fb1bffbc"
   dependencies:
     copy-webpack-plugin "^4.6.0"
     lodash "^4.17.11"
-    webpack "4"
 
 "@znemz/eslint-config-react@^0.0.3":
   version "0.0.3"
@@ -1391,7 +1390,7 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
-cesium@>=1.48:
+cesium@^1.48:
   version "1.51.0"
   resolved "https://registry.yarnpkg.com/cesium/-/cesium-1.51.0.tgz#30c9781d447e4d8f1904265809e5542a7fdaeaa4"
   dependencies:
@@ -5707,8 +5706,8 @@ terser-webpack-plugin@^1.1.0:
     worker-farm "^1.5.2"
 
 terser@^3.8.1:
-  version "3.10.11"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-3.10.11.tgz#e063da74b194dde9faf0a561f3a438c549d2da3f"
+  version "3.10.12"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-3.10.12.tgz#06d40765e40b33fd97977c0896c75b2b5d42142d"
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
