@@ -34,7 +34,7 @@
     "prepublishOnly": "yarn build",
     "s": "yarn serve",
     "serve": "yarn http-server .",
-    "start": "rollup -c -w",
+    "start": "yarn s & yarn rollup -c -w",
     "pretest": "yarn build"
   },
   "browser": "dist/browser.js",
