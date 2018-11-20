@@ -7,8 +7,8 @@ import json from 'rollup-plugin-json';
 import pkg from './package.json';
 
 const globals = {
-  cesium: 'cesium',
-  knockout: 'knockout'
+  cesium: 'Cesium',
+  'knockout-es5': 'ko'
 };
 
 export default {
@@ -16,9 +16,10 @@ export default {
   output: [
     {
       file: pkg.browser,
-      format: 'cjs',
+      format: 'iife',
       sourceMap: true,
-      globals
+      globals,
+      name: 'viewerCesiumNavigationMixin'
     },
     {
       file: pkg.module,

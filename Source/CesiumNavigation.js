@@ -13,7 +13,7 @@ const { defined, DeveloperError, Event } = Cesium;
  * @param {Viewer|CesiumWidget} viewerCesiumWidget The Viewer or CesiumWidget instance
  */
 export default function CesiumNavigation(...args) {
-  initialize(...args);
+  initialize.apply(this, args);
 
   this._onDestroyListeners = [];
 }

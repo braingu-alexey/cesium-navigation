@@ -29,6 +29,8 @@
     "format": "prettier-eslint --config --write '{Source,test,Test}/**/*.js'",
     "lint": "eslint --fix '{Source,Test,test}/**/*.js'",
     "prepublishOnly": "yarn build",
+    "s": "yarn serve",
+    "serve": "yarn http-server .",
     "start": "rollup -c -w",
     "pretest": "yarn build"
   },
@@ -67,19 +69,11 @@
     "sort-package-json": "^1.15.0"
   },
   "devDependencies": {
-    "compression": "1.0.8",
-    "csso": "^1.5.4",
-    "express": "~4.9.x",
-    "fs-extra": "^0.26.5",
-    "less": "^1.7.5",
-    "less-loader": "^4.1.0",
-    "node-minify": "^1.3.7",
-    "requirejs": "^2.1.22",
+    "http-server": "^0.11.1",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-less": "^0.1.5",
     "style-loader": "^0.23.1",
-    "webpack": "^4.26.0",
-    "yargs": "1.2.6"
+    "webpack": "^4.26.0"
   },
   "mainCss": "dist/index.css"
 }

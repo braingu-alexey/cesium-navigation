@@ -1,6 +1,6 @@
 import {
   defined,
-  CesiumMath,
+  Math as CesiumMath,
   getTimestamp,
   EventHelper,
   Transforms,
