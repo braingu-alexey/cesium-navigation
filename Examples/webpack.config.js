@@ -1,6 +1,5 @@
 const path = require('path');
 const makeCesiumWebpack = require('@znemz/cesium-webpack-config').default;
-// const util = require('util');
 
 const config = {
   mode: 'development',
@@ -12,22 +11,32 @@ const config = {
   plugins: [],
   module: {
     rules: [
-      // {
-      //   test: /.*cesium.*/,
-      //   use: 'imports-loader?document=>window'
-      // },
       {
         test: /\.js$/,
         loader: 'babel-loader'
       },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'string-replace-loader',
-      //   options: {
-      //     search: /(.*document.*)/,
-      //     replace: 'if (typeof window !== undefined) { $1 }'
-      //   }
-      // },
+      /*
+        !! TODO: add to cesium-webpack-config
+        Make relative asset resolution work relative to Examples/dist
+      */
+      {
+        test: /\.js$/,
+        loader: 'string-replace-loader',
+        options: {
+          multiple: [
+            {
+              search: "buildModuleUrl\\('(.*)'\\)",
+              replace: "buildModuleUrl('Examples/dist/$1')",
+              flags: 'g'
+            },
+            {
+              search: "getWorkerUrl\\('(.*)'\\)",
+              replace: "getWorkerUrl('Examples/dist/$1')",
+              flags: 'g'
+            }
+          ]
+        }
+      },
       {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader']
@@ -40,5 +49,6 @@ const config = {
   }
 };
 
-module.exports = makeCesiumWebpack(config, path.join(__dirname, '../'));
-// console.warn(util.inspect(module.exports, { depth: 50 }));
+module.exports = makeCesiumWebpack(config, {
+  rootPath: path.join(__dirname, '../')
+});

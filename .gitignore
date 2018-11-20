@@ -6,3 +6,6 @@ project/target
 *.lock
 coverage
 dist
+Assets
+Widgets
+Workers

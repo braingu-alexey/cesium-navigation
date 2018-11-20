@@ -28,8 +28,10 @@
   "scripts": {
     "prebuild": "yarn sort-package-json & yarn clean",
     "build": "rollup -c",
+    "build:all": "yarn clean && yarn build && yarn build:example",
     "build:example": "webpack --config Examples/webpack.config.js ",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist Examples/dist",
+    "clean:example": "rm -rf Examples/dist",
     "format": "prettier-eslint --config --write '{Source,test,Test}/**/*.js'",
     "lint": "eslint --fix '{Source,Test,test}/**/*.js'",
     "prepublishOnly": "yarn build",
@@ -49,7 +51,7 @@
     "markdown-it-sanitizer": "^0.4.1"
   },
   "devDependencies": {
-    "@znemz/cesium-webpack-config": "^0.0.4",
+    "@znemz/cesium-webpack-config": "^0.1.0-0",
     "@znemz/eslint-config-react": "^0.0.3",
     "@znemz/prettier-config": "^0.0.1",
     "babel-cli": "6",
