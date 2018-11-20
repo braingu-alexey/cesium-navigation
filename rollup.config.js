@@ -18,7 +18,7 @@ export default {
   input: 'Source/viewerCesiumNavigationMixin.js',
   output: [
     {
-      file: pkg.browser,
+      file: pkg.browser_,
       format: 'iife',
       sourceMap: true,
       globals,

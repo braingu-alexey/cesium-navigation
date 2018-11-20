@@ -40,7 +40,6 @@
     "start": "yarn s & yarn rollup -c -w",
     "pretest": "yarn build"
   },
-  "browser": "dist/browser.js",
   "dependencies": {
     "almond": "^0.3.2",
     "cesium": "^1.48",
@@ -88,5 +87,6 @@
     "Alberto Acevedo",
     "Nick McCready"
   ],
+  "browser_": "dist/browser.js",
   "mainCss": "dist/index.css"
 }

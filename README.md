@@ -77,3 +77,7 @@ viewer.cesiumNavigation.setNavigationLocked(true / false);
 ```
 
 - if there are still open questions please checkout the examples
+
+## Why browser_ in package.json
+
+Here is [why](https://github.com/webpack/webpack/issues/4674) and [here](https://github.com/nmccready/cesium-navigation/issues/2).
