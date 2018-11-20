@@ -233,9 +233,9 @@
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
 
-"@znemz/cesium-webpack-config@^0.1.0-0":
-  version "0.1.0-0"
-  resolved "https://registry.yarnpkg.com/@znemz/cesium-webpack-config/-/cesium-webpack-config-0.1.0-0.tgz#8109c81d95ea2573742f44bfd9e2ae0c1d3f656c"
+"@znemz/cesium-webpack-config@^0.1":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@znemz/cesium-webpack-config/-/cesium-webpack-config-0.1.0.tgz#99812ffdd25ea067bb0279a0e3de57db22ac5538"
   dependencies:
     copy-webpack-plugin "^4.6.0"
     lodash "^4.17.11"
