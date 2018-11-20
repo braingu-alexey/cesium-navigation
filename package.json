@@ -1,6 +1,6 @@
 {
   "name": "@znemz/cesium-navigation",
-  "version": "1.1.4",
+  "version": "2.0.0-0",
   "description": "Cesium plugin that adds a compass, navigator, and distance scale to the map",
   "keywords": [
     "cesium",
