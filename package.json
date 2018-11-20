@@ -18,8 +18,15 @@
     "type": "git",
     "url": "git+https://github.com/alberto-acevedo/cesium-navigation.git"
   },
+  "files": [
+    "dist"
+  ],
   "license": "Apache-2.0",
-  "author": "alberto acevedo",
+  "author": "Alberto Acevedo",
+  "authors": [
+    "Alberto Acevedo",
+    "Nick McCready"
+  ],
   "main": "dist/index.js",
   "module": "dist/esm.js",
   "scripts": {
