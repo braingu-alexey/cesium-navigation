@@ -8,7 +8,10 @@ import pkg from './package.json';
 
 const globals = {
   cesium: 'Cesium',
-  'knockout-es5': 'ko'
+  'knockout-es5': 'ko',
+  hammerjs: 'Hammer',
+  'markdown-it': 'markdownit',
+  'markdown-it-sanitizer': 'markdownitSanitizer'
 };
 
 export default {

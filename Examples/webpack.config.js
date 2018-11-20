@@ -1,20 +1,36 @@
 const path = require('path');
-// const debug = require('./debug').spawn('webpack');
+const makeCesiumWebpack = require('@znemz/cesium-webpack-config').default;
+// const util = require('util');
 
-module.exports = {
-  entry: './index.js',
+const config = {
+  mode: 'development',
+  entry: path.resolve(__dirname, 'src', 'entry.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'webpack.min.js' // for webpack 3 /4 w UnminifiedWebpackPlugin
+    filename: 'sources.bundle.js'
   },
   plugins: [],
   module: {
     rules: [
+      // {
+      //   test: /.*cesium.*/,
+      //   use: 'imports-loader?document=>window'
+      // },
       {
         test: /\.js$/,
-        use: {
-          loader: 'babel-loader'
-        }
+        loader: 'babel-loader'
+      },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'string-replace-loader',
+      //   options: {
+      //     search: /(.*document.*)/,
+      //     replace: 'if (typeof window !== undefined) { $1 }'
+      //   }
+      // },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader']
       },
       {
         test: /\.less$/,
@@ -23,3 +39,6 @@ module.exports = {
     ]
   }
 };
+
+module.exports = makeCesiumWebpack(config, path.join(__dirname, '../'));
+// console.warn(util.inspect(module.exports, { depth: 50 }));

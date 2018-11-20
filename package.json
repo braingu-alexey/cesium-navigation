@@ -28,6 +28,7 @@
   "scripts": {
     "prebuild": "yarn sort-package-json & yarn clean",
     "build": "rollup -c",
+    "build:example": "webpack --config Examples/webpack.config.js ",
     "clean": "rm -rf dist",
     "format": "prettier-eslint --config --write '{Source,test,Test}/**/*.js'",
     "lint": "eslint --fix '{Source,Test,test}/**/*.js'",
@@ -48,14 +49,17 @@
     "markdown-it-sanitizer": "^0.4.1"
   },
   "devDependencies": {
+    "@znemz/cesium-webpack-config": "^0.0.4",
     "@znemz/eslint-config-react": "^0.0.3",
     "@znemz/prettier-config": "^0.0.1",
     "babel-cli": "6",
     "babel-core": "6",
     "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "6",
     "babel-plugin-transform-object-rest-spread": "6",
     "babel-preset-env": "^1.7",
+    "css-loader": "^1.0.1",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^1.9.0",
@@ -73,8 +77,10 @@
     "rollup-plugin-less": "^0.1.5",
     "rollup-plugin-node-resolve": "^3.4.0",
     "sort-package-json": "^1.15.0",
+    "string-replace-loader": "^2.1.1",
     "style-loader": "^0.23.1",
-    "webpack": "^4.26.0"
+    "webpack": "4",
+    "webpack-cli": "^3.1.2"
   },
   "authors": [
     "Alberto Acevedo",
