@@ -10,13 +10,13 @@
     "navigator",
     "scale"
   ],
-  "homepage": "https://github.com/alberto-acevedo/cesium-navigation#readme",
+  "homepage": "https://github.com/nmccready/cesium-navigation#readme",
   "bugs": {
-    "url": "https://github.com/alberto-acevedo/cesium-navigation/issues"
+    "url": "https://github.com/nmccready/cesium-navigation/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alberto-acevedo/cesium-navigation.git"
+    "url": "git+https://github.com/nmccready/cesium-navigation.git"
   },
   "license": "Apache-2.0",
   "author": "Alberto Acevedo",
