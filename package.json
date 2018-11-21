@@ -38,10 +38,10 @@
     "s": "yarn serve",
     "serve": "yarn http-server .",
     "start": "yarn s & yarn rollup -c -w",
-    "pretest": "yarn build"
+    "pretest": "yarn build",
+    "test": "yarn lint"
   },
   "dependencies": {
-    "almond": "^0.3.2",
     "cesium": "^1.48",
     "hammerjs": "^2.0.8",
     "knockout": "^3.4.0",

@@ -45,8 +45,8 @@ export function getCameraFocus(terria, inWorldCoordinates, _result) {
   }
 
   if (
-    scene.mode == SceneMode.SCENE2D ||
-    scene.mode == SceneMode.COLUMBUS_VIEW
+    scene.mode === SceneMode.SCENE2D ||
+    scene.mode === SceneMode.COLUMBUS_VIEW
   ) {
     result = camera.worldToCameraCoordinatesPoint(result, result);
 

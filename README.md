@@ -1,4 +1,5 @@
 # cesium-navigation
+<!-- [![NPM version][npm-image]][npm-url] [![build status][travis-image]][travis-url] -->
 
 This is a Cesium plugin that adds to the Cesium map a user friendly compass, navigator (zoom in/out), and
 distance scale graphical user interface.
@@ -81,3 +82,8 @@ viewer.cesiumNavigation.setNavigationLocked(true / false);
 ## Why browser_ in package.json
 
 Here is [why](https://github.com/webpack/webpack/issues/4674) and [here](https://github.com/nmccready/cesium-navigation/issues/2).
+
+[npm-image]: https://img.shields.io/npm/v/@znemz/cesium-navigation.svg
+[npm-url]: https://www.npmjs.com/package/@znemz/cesium-navigation
+[travis-image]: https://img.shields.io/travis/cesium-navigation.svg
+[travis-url]: https://travis-ci.org/nmccready/cesium-navigation

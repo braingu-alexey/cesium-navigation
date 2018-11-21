@@ -19,7 +19,8 @@ export const KnockoutMarkdownBinding = {
     const knockoutEle = _knockoutEle;
     knockoutEle.bindingHandlers.markdown = {
       init() {
-        // Prevent binding on the dynamically-injected HTML (as developers are unlikely to expect that, and it has security implications)
+        // Prevent binding on the dynamically-injected HTML
+        // (as developers are unlikely to expect that, and it has security implications)
         return { controlsDescendantBindings: true };
       },
       update(_element, valueAccessor) {
