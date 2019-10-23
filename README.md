@@ -48,6 +48,8 @@ enableZoomControls --> option used to enable or disable the zoom controls. Value
 
 enableDistanceLegend --> option used to enable or disable the distance legend. Values accepted are true for enabling and false to disable. The default is true.
 
+units --> option used to set the type of units being displayed. Values accepted are 'km' or 'nm'. The default is 'km'.
+
 More options will be set in future releases of the plugin.
 ```
 
@@ -60,6 +62,7 @@ options.defaultResetView = Cesium.Rectangle.fromDegrees(71, 3, 90, 14);
 options.enableCompass = true;
 options.enableZoomControls = false;
 options.enableDistanceLegend = false;
+options.units = 'km';
 cesiumViewer.extend(window.viewerCesiumNavigationMixin, options);
 ```
 

@@ -53,7 +53,7 @@ export default function DistanceLegendViewModel(options) {
     if (defined(that.terria)) {
       const { scene } = that.terria;
       that._removeSubscription = scene.postRender.addEventListener(function() {
-        updateDistanceLegendCesium(this, scene);
+        updateDistanceLegendCesium(this, scene, options.units);
       }, that);
     }
   }
@@ -139,7 +139,7 @@ const distances = [
   50000000
 ];
 
-function updateDistanceLegendCesium(_viewModel, scene) {
+function updateDistanceLegendCesium(_viewModel, scene, units) {
   const viewModel = _viewModel;
   if (!viewModel.enableDistanceLegend) {
     viewModel.barWidth = undefined;
@@ -195,10 +195,18 @@ function updateDistanceLegendCesium(_viewModel, scene) {
 
   if (defined(distance)) {
     let label;
-    if (distance >= 1000) {
-      label = `${(distance / 1000).toString()} km`;
+    if (units === 'nm') {
+      if (distance >= 1852) {
+        label = `${(distance / 1852).toFixed(1)} nm`;
+      } else {
+        label = `${(distance / 1852).toFixed(2)} nm`;
+      }
     } else {
-      label = `${distance.toString()} m`;
+      if (distance >= 1000) {
+        label = `${(distance / 1000).toString()} km`;
+      } else {
+        label = `${distance.toString()} m`;
+      }
     }
 
     viewModel.barWidth = (distance / pixelDistance) | 0;
