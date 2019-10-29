@@ -73,7 +73,7 @@ export const UNITS_TO_ABBREVIATION = {
   kilometers: 'km',
   acres: 'ac',
   miles: 'mi',
-  nauticalmiles: 'NM',
+  nauticalmiles: 'nm',
   inches: 'inch',
   yards: 'yd',
   feet: 'ft',
