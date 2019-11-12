@@ -42,7 +42,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "cesium": "^1.48",
+    "cesium": ">=1.48",
     "hammerjs": "^2.0.8",
     "knockout": "^3.4.0",
     "knockout-es5": "^0.4.4",

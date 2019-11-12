@@ -39,7 +39,7 @@ See: [Examples](./Examples/index.html)
 ## Available options of the plugin
 
 **defaultResetView** - option used to set a default view when resetting the map view with the reset navigation
-control. Values accepted are of type Cesium.Cartographic and Cesium.Rectangle.
+control. Values accepted are of type Cesium's Cartographic and Rectangle.
 
 **enableCompass** - option used to enable or disable the compass. Values accepted are true for enabling and false to disable. The default is true.
 
@@ -56,8 +56,11 @@ More options will be set in future releases of the plugin.
 Example of using the options when loading Cesium without requirejs:
 
 ```JavaScript
+import { Rectangle, Viewer } from 'cesium';
+
+const cesiumViewer = new Viewer();
 var options = {};
-options.defaultResetView = Cesium.Rectangle.fromDegrees(71, 3, 90, 14);
+options.defaultResetView = Rectangle.fromDegrees(71, 3, 90, 14);
 // Only the compass will show on the map
 options.enableCompass = true;
 options.enableZoomControls = false;

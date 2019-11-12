@@ -1,10 +1,8 @@
-import Cesium from 'cesium';
+import { defined, DeveloperError, Event } from 'cesium';
 import registerKnockoutBindings from './Core/registerKnockoutBindings';
 import DistanceLegendViewModel from './ViewModels/DistanceLegendViewModel';
 import NavigationViewModel from './ViewModels/NavigationViewModel';
 import './Styles/cesium-navigation.less';
-
-const { defined, DeveloperError, Event } = Cesium;
 
 /**
  * @alias CesiumNavigation
