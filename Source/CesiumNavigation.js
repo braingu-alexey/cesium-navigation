@@ -72,7 +72,7 @@ CesiumNavigation.prototype.addOnDestroyListener = function(callback) {
  * @param {Viewer|CesiumWidget} viewerCesiumWidget The Viewer or CesiumWidget instance
  * @param options
  */
-function initialize(viewerCesiumWidget, options) {
+function initialize(viewerCesiumWidget, options = { units: 'kilometers' }) {
   if (!defined(viewerCesiumWidget)) {
     throw new DeveloperError('CesiumWidget or Viewer is required.');
   }
@@ -88,7 +88,7 @@ function initialize(viewerCesiumWidget, options) {
   cesiumWidget.container.appendChild(container);
 
   this.terria = viewerCesiumWidget;
-  this.terria.options = defined(options) ? options : {};
+  this.terria.options = defined(options);
   this.terria.afterWidgetChanged = new Event();
   this.terria.beforeWidgetChanged = new Event();
   this.container = container;
@@ -107,6 +107,7 @@ function initialize(viewerCesiumWidget, options) {
     container.appendChild(this.distanceLegendDiv);
     this.distanceLegendDiv.setAttribute('id', 'distanceLegendDiv');
     this.distanceLegendViewModel = DistanceLegendViewModel.create({
+      ...options,
       container: this.distanceLegendDiv,
       terria: this.terria,
       mapElement: container,

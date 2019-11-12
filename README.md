@@ -38,20 +38,20 @@ See: [Examples](./Examples/index.html)
 
 ## Available options of the plugin
 
-```
-defaultResetView --> option used to set a default view when resetting the map view with the reset navigation
+**defaultResetView** - option used to set a default view when resetting the map view with the reset navigation
 control. Values accepted are of type Cesium's Cartographic and Rectangle.
 
-enableCompass --> option used to enable or disable the compass. Values accepted are true for enabling and false to disable. The default is true.
+**enableCompass** - option used to enable or disable the compass. Values accepted are true for enabling and false to disable. The default is true.
 
-enableZoomControls --> option used to enable or disable the zoom controls. Values accepted are true for enabling and false to disable. The default is true.
+**enableZoomControls** - option used to enable or disable the zoom controls. Values accepted are true for enabling and false to disable. The default is true.
 
-enableDistanceLegend --> option used to enable or disable the distance legend. Values accepted are true for enabling and false to disable. The default is true.
+**enableDistanceLegend** - option used to enable or disable the distance legend. Values accepted are true for enabling and false to disable. The default is true.
 
-units --> option used to set the type of units being displayed. Values accepted are 'km' or 'nm'. The default is 'km'.
+**units** - option used to set the type of units being displayed. Values accepted are turf helpers units ['kilometers', etc...](https://github.com/Turfjs/turf/blob/v5.1.6/packages/turf-helpers/index.d.ts#L20).
+
+**distanceLabelFormatter** - callback function which allows you to override default [distanceLabelFormater](./Source/Core/Utils.js#88). `(convertedDistance: Number, units : Units): string =>`
 
 More options will be set in future releases of the plugin.
-```
 
 Example of using the options when loading Cesium without requirejs:
 
@@ -65,7 +65,9 @@ options.defaultResetView = Rectangle.fromDegrees(71, 3, 90, 14);
 options.enableCompass = true;
 options.enableZoomControls = false;
 options.enableDistanceLegend = false;
-options.units = 'km';
+options.units = 'kilometers' // default is kilometers;
+// turf helpers units https://github.com/Turfjs/turf/blob/v5.1.6/packages/turf-helpers/index.d.ts#L20
+options.distanceLabelFormatter = (convertedDistance, units : Units): string => { ... } // custom label formatter
 cesiumViewer.extend(window.viewerCesiumNavigationMixin, options);
 ```
 
