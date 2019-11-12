@@ -38,7 +38,7 @@ See: [Examples](./Examples/index.html)
 
 ## Available options of the plugin
 
-**defaultResetView** option used to set a default view when resetting the map view with the reset navigation
+**defaultResetView** - option used to set a default view when resetting the map view with the reset navigation
 control. Values accepted are of type Cesium's Cartographic and Rectangle.
 
 **enableCompass** - option used to enable or disable the compass. Values accepted are true for enabling and false to disable. The default is true.
