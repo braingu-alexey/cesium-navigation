@@ -1,8 +1,6 @@
-import Cesium from 'cesium';
+import { defined, defineProperties, DeveloperError } from 'cesium';
 import CesiumNavigation from './CesiumNavigation';
 import './Styles/cesium-navigation.less';
-
-const { defined, defineProperties, DeveloperError } = Cesium;
 /**
  * Created by Larcius on 18.02.16.
  */
