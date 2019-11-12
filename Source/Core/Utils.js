@@ -1,4 +1,5 @@
 import { defined, Ray, Cartesian3, Cartographic, SceneMode } from 'cesium';
+import { convertLength } from '@turf/helpers';
 
 const unprojectedScratch = new Cartographic();
 const rayScratch = new Ray();
@@ -63,4 +64,38 @@ export function getCameraFocus(terria, inWorldCoordinates, _result) {
   }
 
   return result;
+}
+
+export const UNITS_TO_ABBREVIATION = {
+  meters: 'm',
+  millimeters: 'mm',
+  centimeters: 'cm',
+  kilometers: 'km',
+  acres: 'ac',
+  miles: 'mi',
+  nauticalmiles: 'nm',
+  inches: 'inch',
+  yards: 'yd',
+  feet: 'ft',
+  radians: 'rad',
+  degrees: 'deg'
+};
+
+/**
+ * @param  {Number} length
+ * @param  {TufHelper.Units} units
+ */
+export function distanceLabelFormatter(length, units) {
+  let fixed = 1;
+  if (length < 1) {
+    fixed = 2;
+    if (units === 'kilometers') {
+      /* eslint-disable no-param-reassign */
+      units = 'meters';
+      length = convertLength(length, 'kilometers', units);
+      /* eslint-enable no-param-reassign */
+    }
+  }
+
+  return `${length.toFixed(fixed)} ${UNITS_TO_ABBREVIATION[units]}`;
 }

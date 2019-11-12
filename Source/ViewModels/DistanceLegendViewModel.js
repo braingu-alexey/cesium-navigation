@@ -8,6 +8,9 @@ import {
   EventHelper
 } from 'cesium';
 import loadView from '../Core/loadView';
+import { convertLength } from '@turf/helpers';
+import * as utils from '../Core/Utils';
+
 
 /* eslint-disable no-bitwise */
 
@@ -53,7 +56,7 @@ export default function DistanceLegendViewModel(options) {
     if (defined(that.terria)) {
       const { scene } = that.terria;
       that._removeSubscription = scene.postRender.addEventListener(function() {
-        updateDistanceLegendCesium(this, scene, options.units);
+        updateDistanceLegendCesium(this, scene, options);
       }, that);
     }
   }
@@ -139,7 +142,21 @@ const distances = [
   50000000
 ];
 
-function updateDistanceLegendCesium(_viewModel, scene, units) {
+/**
+ * @param  {KnockoutViewModel} _viewModel
+ * @param  {HtmlElement} scene
+ * @param  {Object} options
+ * @param  {TufHelper.Units} options.units
+ * @param  {(_:Number, _: Units): string => {}} options.distanceLabelFormatter
+ */
+function updateDistanceLegendCesium(
+  _viewModel,
+  scene,
+  {
+    units = 'kilometers',
+    distanceLabelFormatter = utils.distanceLabelFormatter
+  } = {}
+) {
   const viewModel = _viewModel;
   if (!viewModel.enableDistanceLegend) {
     viewModel.barWidth = undefined;
@@ -194,20 +211,8 @@ function updateDistanceLegendCesium(_viewModel, scene, units) {
   }
 
   if (defined(distance)) {
-    let label;
-    if (units === 'nm') {
-      if (distance >= 1852) {
-        label = `${(distance / 1852).toFixed(1)} nm`;
-      } else {
-        label = `${(distance / 1852).toFixed(2)} nm`;
-      }
-    } else {
-      if (distance >= 1000) {
-        label = `${(distance / 1000).toString()} km`;
-      } else {
-        label = `${distance.toString()} m`;
-      }
-    }
+    const convertedDistance = convertLength(distance, 'meters', units);
+    const label = distanceLabelFormatter(convertedDistance, units);
 
     viewModel.barWidth = (distance / pixelDistance) | 0;
     viewModel.distanceLabel = label;

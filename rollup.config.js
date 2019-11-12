@@ -20,20 +20,20 @@ export default {
     {
       file: pkg.browser_,
       format: 'iife',
-      sourceMap: true,
+      // sourcemap: 'inline',
       globals,
       name: 'viewerCesiumNavigationMixin'
     },
     {
       file: pkg.module,
       format: 'esm',
-      sourceMap: true,
+      // sourcemap: 'inline',
       globals
     },
     {
       file: pkg.main,
       format: 'cjs',
-      sourceMap: true,
+      // sourcemap: 'inline',
       globals
     }
   ],

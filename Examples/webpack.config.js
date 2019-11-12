@@ -4,6 +4,7 @@ const makeCesiumWebpack = require('@znemz/cesium-webpack-config').default;
 const config = {
   mode: 'development',
   entry: path.resolve(__dirname, 'src', 'entry.js'),
+  devtool: 'cheap-module-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'sources.bundle.js'
