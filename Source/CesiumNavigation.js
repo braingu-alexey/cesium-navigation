@@ -88,7 +88,7 @@ function initialize(viewerCesiumWidget, options = { units: 'kilometers' }) {
   cesiumWidget.container.appendChild(container);
 
   this.terria = viewerCesiumWidget;
-  this.terria.options = defined(options);
+  this.terria.options = defined(options) ? options : {};
   this.terria.afterWidgetChanged = new Event();
   this.terria.beforeWidgetChanged = new Event();
   this.container = container;
