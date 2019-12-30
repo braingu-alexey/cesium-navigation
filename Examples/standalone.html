@@ -46,7 +46,7 @@
         console.error('viewerCesiumNavigationMixin is undefined');
       } else {
         // extend our view by the cesium navigation mixin
-        cesiumViewer.extend(cesiumNavMixin, {});
+        cesiumViewer.extend(cesiumNavMixin, {containerWidth : 100});
         // you can access the cesium navigation by cesiumViewer.cesiumNavigation or cesiumViewer.cesiumWidget.cesiumNavigation
 
         // function createSpirographEntity(url, longitude, latitude, height, radiusMedian, radiusSubCircle,

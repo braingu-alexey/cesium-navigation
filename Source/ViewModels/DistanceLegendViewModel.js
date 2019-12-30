@@ -26,6 +26,7 @@ export default function DistanceLegendViewModel(options) {
 
   this.distanceLabel = undefined;
   this.barWidth = undefined;
+  this.containerWidth = defined(options.containerWidth) ? options.containerWidth : 125;
 
   this.enableDistanceLegend = defined(options.enableDistanceLegend)
     ? options.enableDistanceLegend
@@ -84,13 +85,13 @@ DistanceLegendViewModel.prototype.show = function(container) {
     testing =
       '<div class="distance-legend" data-bind="visible: distanceLabel && barWidth">' +
       '<div class="distance-legend-label" data-bind="text: distanceLabel"></div>' +
-      '<div class="distance-legend-scale-bar" data-bind="style: { width: barWidth + \'px\', left: (5 + (125 - barWidth) / 2) + \'px\' }"></div>' +
+      '<div class="distance-legend-scale-bar" data-bind="style: { width: barWidth + \'px\', left: (5 + ('+ this.containerWidth +' - barWidth) / 2) + \'px\' }"></div>' +
       '</div>';
   } else {
     testing =
       '<div class="distance-legend"  style="display: none;" data-bind="visible: distanceLabel && barWidth">' +
       '<div class="distance-legend-label"  data-bind="text: distanceLabel"></div>' +
-      '<div class="distance-legend-scale-bar"  data-bind="style: { width: barWidth + \'px\', left: (5 + (125 - barWidth) / 2) + \'px\' }"></div>' +
+      '<div class="distance-legend-scale-bar"  data-bind="style: { width: barWidth + \'px\', left: (5 + ('+ this.containerWidth +' - barWidth) / 2) + \'px\' }"></div>' +
       '</div>';
   }
   loadView(testing, container, this);

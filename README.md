@@ -2,6 +2,8 @@
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
+Add custom addtions to the original plugin.
+
 This is a Cesium plugin that adds to the Cesium map a user friendly compass, navigator (zoom in/out), and
 distance scale graphical user interface.
 
@@ -41,6 +43,8 @@ See: [Examples](./Examples/index.html)
 **defaultResetView** - option used to set a default view when resetting the map view with the reset navigation
 control. Values accepted are of type Cesium's Cartographic and Rectangle.
 
+**containerWidth** - option used to set the calculation with of the container. The default is 125. Must also update / overide default css values for `.distance-legend` & `.distance-legend-label` .
+
 **enableCompass** - option used to enable or disable the compass. Values accepted are true for enabling and false to disable. The default is true.
 
 **enableZoomControls** - option used to enable or disable the zoom controls. Values accepted are true for enabling and false to disable. The default is true.
@@ -65,6 +69,7 @@ options.defaultResetView = Rectangle.fromDegrees(71, 3, 90, 14);
 options.enableCompass = true;
 options.enableZoomControls = false;
 options.enableDistanceLegend = false;
+options.containerWidth = 125;
 options.units = 'kilometers' // default is kilometers;
 // turf helpers units https://github.com/Turfjs/turf/blob/v5.1.6/packages/turf-helpers/index.d.ts#L20
 options.distanceLabelFormatter = (convertedDistance, units : Units): string => { ... } // custom label formatter

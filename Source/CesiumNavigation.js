@@ -111,7 +111,8 @@ function initialize(viewerCesiumWidget, options = { units: 'kilometers' }) {
       container: this.distanceLegendDiv,
       terria: this.terria,
       mapElement: container,
-      enableDistanceLegend: true
+      enableDistanceLegend: true,
+      containerWidth : this.terria.options.containerWidth
     });
   }
 
