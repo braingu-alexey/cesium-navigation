@@ -2,7 +2,7 @@
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-Add custom addtions to the original plugin.
+Add custom addtions to the original cesiu-navigation plugin.
 
 This is a Cesium plugin that adds to the Cesium map a user friendly compass, navigator (zoom in/out), and
 distance scale graphical user interface.
@@ -12,7 +12,7 @@ is no need to conform to Cesium's insanity of requirejs when tools like webpack 
 
 ## How to get it
 
-`yarn install @znemz/cesium-navigation`
+`yarn install @cmcleese/cesium-navigation`
 
 ## Why did you build it
 
@@ -44,6 +44,8 @@ See: [Examples](./Examples/index.html)
 control. Values accepted are of type Cesium's Cartographic and Rectangle.
 
 **containerWidth** - option used to set the calculation with of the container. The default is 125. Must also update / overide default css values for `.distance-legend` & `.distance-legend-label` .
+
+This allows you to adjust to the width of the bar via custom css.
 
 **enableCompass** - option used to enable or disable the compass. Values accepted are true for enabling and false to disable. The default is true.
 
@@ -99,8 +101,8 @@ Here is [why](https://github.com/webpack/webpack/issues/4674) and [here](https:/
 
 ## [License](./LICENSE)
 
-[downloads-image]: http://img.shields.io/npm/dm/@znemz/cesium-navigation.svg
-[npm-image]: https://img.shields.io/npm/v/@znemz/cesium-navigation.svg
-[npm-url]: https://www.npmjs.com/package/@znemz/cesium-navigation
+[downloads-image]: http://img.shields.io/npm/dm/@cmcleese/cesium-navigation.svg
+[npm-image]: https://img.shields.io/npm/v/@cmcleese/cesium-navigation.svg
+[npm-url]: https://www.npmjs.com/package/@cmcleese/cesium-navigation
 [travis-image]: https://img.shields.io/travis/nmccready/cesium-navigation.svg?label=travis-ci
 [travis-url]: https://travis-ci.org/nmccready/cesium-navigation
