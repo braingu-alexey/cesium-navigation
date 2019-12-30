@@ -1,6 +1,6 @@
 {
-  "name": "@znemz/cesium-navigation",
-  "version": "3.0.51",
+  "name": "@cmcleese/cesium-navigation",
+  "version": "3.0.52",
   "description": "Cesium plugin that adds a compass, navigator, and distance scale to the map",
   "keywords": [
     "cesium",
@@ -86,7 +86,8 @@
   },
   "authors": [
     "Alberto Acevedo",
-    "Nick McCready"
+    "Nick McCready",
+	"Chris McLeese"
   ],
   "browser_": "dist/browser.js",
   "mainCss": "dist/index.css"
