@@ -2,7 +2,7 @@
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-Add custom addtions to the original cesiu-navigation plugin.
+Add custom addtions to the original cesium-navigation plugin.
 
 This is a Cesium plugin that adds to the Cesium map a user friendly compass, navigator (zoom in/out), and
 distance scale graphical user interface.

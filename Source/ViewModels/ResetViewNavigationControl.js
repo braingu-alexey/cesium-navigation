@@ -81,7 +81,8 @@ ResetViewNavigationControl.prototype.resetView = function() {
     if (this.terria.options.defaultResetView) {
       if (
         this.terria.options.defaultResetView &&
-        this.terria.options.defaultResetView instanceof Cartographic
+        //this.terria.options.defaultResetView instanceof Cartographic
+        this.terria.options.defaultResetView.constructor.name === Cartographic.name
       ) {
         camera.flyTo({
           destination: scene.globe.ellipsoid.cartographicToCartesian(
@@ -90,7 +91,8 @@ ResetViewNavigationControl.prototype.resetView = function() {
         });
       } else if (
         this.terria.options.defaultResetView &&
-        this.terria.options.defaultResetView instanceof Rectangle
+        //this.terria.options.defaultResetView instanceof Rectangle
+        this.terria.options.defaultResetView.constructor.name === Rectangle.name
       ) {
         try {
           Rectangle.validate(this.terria.options.defaultResetView);
