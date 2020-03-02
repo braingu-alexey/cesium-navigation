@@ -1,4 +1,4 @@
-import { defined, defineProperties, DeveloperError } from 'cesium';
+import { defined, DeveloperError } from 'cesium';
 import CesiumNavigation from './CesiumNavigation';
 import './Styles/cesium-navigation.less';
 /**
@@ -36,7 +36,7 @@ function viewerCesiumNavigationMixin(viewer, options) {
     })(viewer)
   );
 
-  defineProperties(viewer, {
+  Object.defineProperties(viewer, {
     cesiumNavigation: {
       configurable: true,
       get: () => viewer.cesiumWidget.cesiumNavigation
@@ -62,7 +62,7 @@ const init = function(viewerCesiumWidget, options) {
     ? viewerCesiumWidget.cesiumWidget
     : viewerCesiumWidget;
 
-  defineProperties(cesiumWidget, {
+  Object.defineProperties(cesiumWidget, {
     cesiumNavigation: {
       configurable: true,
       get: () => cesiumNavigation
