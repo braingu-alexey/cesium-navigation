@@ -1,6 +1,6 @@
 {
   "name": "@cmcleese/cesium-navigation",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Cesium plugin that adds a compass, navigator, and distance scale to the map",
   "keywords": [
     "cesium",
@@ -10,13 +10,13 @@
     "navigator",
     "scale"
   ],
-  "homepage": "https://github.com/nmccready/cesium-navigation#readme",
+  "homepage": "https://github.com/cmcleese/cesium-navigation#readme",
   "bugs": {
-    "url": "https://github.com/nmccready/cesium-navigation/issues"
+    "url": "https://github.com/cmcleese/cesium-navigation/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nmccready/cesium-navigation.git"
+    "url": "git+https://github.com/cmcleese/cesium-navigation.git"
   },
   "license": "Apache-2.0",
   "author": "Alberto Acevedo",
