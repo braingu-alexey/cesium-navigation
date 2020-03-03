@@ -1,4 +1,4 @@
-import { defined, defineProperties, DeveloperError } from 'cesium';
+import { defined, DeveloperError } from 'cesium';
 import Knockout from 'knockout-es5';
 
 /**
@@ -72,7 +72,7 @@ export default function UserInterfaceControl(terria) {
   ]);
 }
 
-defineProperties(UserInterfaceControl.prototype, {
+Object.defineProperties(UserInterfaceControl.prototype, {
   /**
    * Gets the Terria instance.
    * @memberOf UserInterfaceControl.prototype
