@@ -1,6 +1,6 @@
 {
   "name": "@cmcleese/cesium-navigation",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Cesium plugin that adds a compass, navigator, and distance scale to the map",
   "keywords": [
     "cesium",
@@ -42,7 +42,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "cesium": "^1.68",
+    "cesium": "^1.69",
     "hammerjs": "^2.0.8",
     "knockout": "^3.4.0",
     "knockout-es5": "^0.4.4",
