@@ -41,7 +41,13 @@
     "pretest": "yarn build",
     "test": "yarn lint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "hammerjs": "^2.0.8",
+    "knockout": "^3.4.0",
+    "knockout-es5": "^0.4.4",
+    "markdown-it": "^7.0.0",
+    "markdown-it-sanitizer": "^0.4.1"
+  },
   "devDependencies": {
     "@turf/helpers": "^6.1.4",
     "@znemz/cesium-webpack-config": "0.1.2",
@@ -62,14 +68,9 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "hammerjs": "^2.0.8",
     "http-server": "^0.11.1",
     "jest": "23",
     "jest-extended": "^0.8",
-    "knockout": "^3.4.0",
-    "knockout-es5": "^0.4.4",
-    "markdown-it": "^7.0.0",
-    "markdown-it-sanitizer": "^0.4.1",
     "prettier": "^1.15.2",
     "rollup": "^0.67.1",
     "rollup-plugin-babel": "^3",
