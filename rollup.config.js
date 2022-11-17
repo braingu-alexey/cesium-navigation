@@ -11,7 +11,7 @@ const globals = {
   'knockout-es5': 'ko',
   hammerjs: 'Hammer',
   'markdown-it': 'markdownit',
-  'markdown-it-sanitizer': 'markdownitSanitizer'
+  'markdown-it-sanitizer': 'markdownitSanitizer',
 };
 
 export default {
@@ -22,19 +22,18 @@ export default {
       format: 'iife',
       // sourcemap: 'inline',
       globals,
-      name: 'viewerCesiumNavigationMixin'
+      name: 'viewerCesiumNavigationMixin',
     },
     {
       file: pkg.module,
       format: 'esm',
       // sourcemap: 'inline',
-      globals
-    },
-    {
+      globals,
+    },{
       file: pkg.main,
       format: 'cjs',
       // sourcemap: 'inline',
-      globals
+      globals,
     }
   ],
   external: Object.keys(globals),
@@ -42,13 +41,13 @@ export default {
     babel({
       exclude: ['node_modules/**', '**/*.less'],
       externalHelpers: false,
-      runtimeHelpers: true
+      runtimeHelpers: true,
     }),
     resolve({
-      browser: true
+      browser: true,
     }),
     commonjs(),
     less({ output: pkg.mainCss }),
-    json()
+    json(),
   ]
 };
