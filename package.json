@@ -33,7 +33,7 @@
     "clean": "rm -rf dist Examples/dist",
     "clean:example": "rm -rf Examples/dist",
     "format": "prettier-eslint --config --write '{Source,test,Test}/**/*.js'",
-    "lint": "eslint --fix '{Source,Test,test}/**/*.js'",
+    "lint": "eslint --fix --no-error-on-unmatched-pattern '{Source,Test,test}/**/*.js'",
     "prepublishOnly": "yarn build:all",
     "s": "yarn serve",
     "serve": "yarn http-server .",
