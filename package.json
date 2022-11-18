@@ -87,7 +87,7 @@
   "authors": [
     "Alberto Acevedo",
     "Nick McCready",
-    "Chris McLeese"
+    "cmcleese"
   ],
   "browser_": "dist/browser.js",
   "mainCss": "dist/index.css"
