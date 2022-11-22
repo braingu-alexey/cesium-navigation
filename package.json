@@ -45,7 +45,7 @@
     "hammerjs": "^2.0.8",
     "knockout": "^3.4.0",
     "knockout-es5": "^0.4.4",
-    "markdown-it": "^7.0.0",
+    "markdown-it": "^12.3.2",
     "markdown-it-sanitizer": "^0.4.1"
   },
   "devDependencies": {
